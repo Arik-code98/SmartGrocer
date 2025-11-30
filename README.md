@@ -92,6 +92,10 @@ Together, these components allow the agent to understand, reason, plan, and resp
 
 ---
 
+**Link for the hosted Model:** https://sctml01-mtp9lq3onlfd8wkmjsgttw.streamlit.app/
+
+---
+
 ## 📦 Installation
 
 1. **Clone the repository**
