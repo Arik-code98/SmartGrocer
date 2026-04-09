@@ -1,135 +1,113 @@
-# 🛒 SmartGrocer – AI-Powered Grocery & Meal Planning Assistant
-
-SmartGrocer is an intelligent household assistant that helps you **track your inventory**, **get reminders for expiring items**, and **generate AI-powered meal plans** using Google Gemini.  
-The project includes a **Streamlit UI** that feels like a chat app, making grocery management effortless.
-
-⚠️**Problem Statement**
-
-Households frequently buy groceries they already have, forget items they need, or allow perishables to expire because keeping track manually is tedious and error-prone. This leads to wasted money, wasted food, and unnecessary stress—especially in busy Indian households where ingredients vary, quantities change often, and meal planning is part of everyday life.
-
-The problem becomes even more complex when trying to decide:
-
-- What should I buy today?
-
-- What items are running low?
-
-- What can I cook with what I already have?
-
-SmartGrocer aims to solve exactly this: a personal grocery-tracking and meal-planning assistant that reduces waste, saves money, and simplifies everyday cooking decisions.
-
-✅**Why Agents?**
-
-Traditional apps rely on manual data entry and rigid workflows. But grocery management is dynamic, conversational, and full of exceptions. Agents—especially LLM-powered ones—are perfect because they can:
-
-- Interpret free-form human language ("add 1L milk expiring tomorrow")
-
-- Reason about inventory, expiry, and consumption
-
-- Generate meal plans based on ingredients
-
-- Ask for missing information automatically
-
-- Learn from user behavior and adapt
-
-- Agents transform the experience into a natural conversation, not a form-filling task.
-
-This is why SmartGrocer works exceptionally well as an agent-based system: it becomes a real helper, not just a dashboard.
-
-⚙️**What I Created — Architecture Overview**
-
-SmartGrocer is a multi-agent AI assistant built with:
-
-- Inventory Agent – Tracks items, quantities, consumption, and expiry.
-
-- Reminder Agent – Detects items close to expiry or running out and notifies the user.
-
-- Meal Planner Agent – Generates structured 3-day meal plans based on available items.
-
-- Chat Agent – Handles general queries, small talk, and natural conversation.
-
-`System Structure`
-
-1. User Interface: A fully custom Streamlit chat UI with clean design, buttons, and natural chat flow.
-
-2. Backend Agents: Python agents that store memory, compute expiry, identify missing items, and generate plans.
-
-3. LLM Integration: *Gemini 2.5 Flash* + *JSON*-structured generation for meal plans.
-
-4. Local Memory: A persistent memory.json that stores inventory and usage history.
-
-Together, these components allow the agent to understand, reason, plan, and respond intelligently.
+# SmartGrocer 🛒
+**An AI-powered grocery tracking and meal planning assistant for Indian households**
 
 ---
 
-## 🔍 Project Overview
+## The Problem
 
-- **Core Functions**:
-  - Add and track grocery inventory  
-  - Automatic expiry detection  
-  - Smart reminders ("Am I forgetting something?")  
-  - AI-generated **3-day Indian meal plans**  
-  - Missing-ingredient detection  
-  - Chat-style interface powered by Gemini  
+Households frequently buy groceries they already have, forget what's running low, or let perishables expire — because tracking it all manually is tedious and error-prone. The mental load compounds when you also need to answer:
 
-- **Tech Used**:
-  - Python  
-  - Streamlit  
-  - Google Gemini 2.5 Flash  
-  - dotenv for API key security  
+- *What should I buy today?*
+- *What's about to go bad?*
+- *What can I cook with what I already have?*
+
+SmartGrocer solves exactly this: a conversational assistant that reduces waste, saves money, and simplifies everyday cooking decisions.
 
 ---
 
-## 📁 Repository Structure
+## Features
 
-| File | Description |
-|------|-------------|
-| `app.py` | Streamlit UI with chat interface and quick-action buttons |
-| `planner.py` | Handles Gemini chat + structured meal planning |
-| `agent_logic.py` | Inventory logic, expiry handling, reminders, and memory storage |
-| `memory.json` | Persistent storage of inventory |
-| `requirements.txt` | Required packages |
-| `README.md` | Project documentation |
+- **Inventory tracking** — Add items with quantities and expiry dates using plain language
+- **Expiry detection** — Automatically flags items close to spoiling
+- **Smart reminders** — Ask "Am I forgetting something?" and get a contextual answer
+- **AI meal planning** — Generates structured 3-day Indian meal plans using your available ingredients
+- **Missing ingredient detection** — Identifies what you need to complete a recipe
+- **Chat-style interface** — Natural conversation powered by Gemini 2.5 Flash
 
 ---
 
-**Link for the hosted Model:** https://sctml01-mtp9lq3onlfd8wkmjsgttw.streamlit.app/
+## Why an Agent?
+
+Traditional grocery apps rely on rigid forms and manual entry. Grocery management is *dynamic* — quantities change, plans shift, and context matters. An LLM-powered agent handles this naturally:
+
+- Understands free-form input like *"add 1L milk expiring tomorrow"*
+- Reasons across inventory, expiry dates, and consumption history
+- Asks clarifying questions when information is incomplete
+- Adapts responses based on what you actually have
+
+The result is a real assistant, not just another dashboard.
 
 ---
 
-## 📦 Installation
+## Architecture
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/smartgrocer.git
-   cd smartgrocer
+SmartGrocer uses a **multi-agent design** with four specialized components:
 
----
+| Agent | Responsibility |
+|---|---|
+| **Inventory Agent** | Tracks items, quantities, and expiry |
+| **Reminder Agent** | Detects low stock and approaching expiry |
+| **Meal Planner Agent** | Generates 3-day meal plans from available ingredients |
+| **Chat Agent** | Handles general queries and natural conversation |
 
-2. **Create & activate virtual environment**
-    ```bash
-    python -m venv .venv
-    .venv\Scripts\activate 
-
----
-
-3. **Install dependencies**
-    ```bash
-    pip install -r requirements.txt
+**Stack:** Python · Streamlit · Google Gemini 2.5 Flash · JSON-structured generation · Local `memory.json` persistence
 
 ---
 
-4. **Add your Gemini API key**
-    Create a .env file:
-    ```bash
-    GOOGLE_API_KEY=your_key_here
+## Repository Structure
+
+```
+smartgrocer/
+├── app.py            # Streamlit chat UI with quick-action buttons
+├── planner.py        # Gemini chat integration and meal plan generation
+├── agent_logic.py    # Inventory logic, expiry handling, reminders, and memory
+├── memory.json       # Persistent inventory storage
+├── requirements.txt  # Dependencies
+└── README.md
+```
 
 ---
 
-5. **Run the app**
-    ```bash
-    streamlit run app.py
+## Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/yourusername/smartgrocer.git
+cd smartgrocer
+```
+
+### 2. Create and activate a virtual environment
+```bash
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
+# macOS / Linux
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Add your Gemini API key
+Create a `.env` file in the project root:
+```
+GOOGLE_API_KEY=your_key_here
+```
+Get your key at [Google AI Studio](https://aistudio.google.com/).
+
+### 5. Run the app
+```bash
+streamlit run app.py
+```
+
+> **Tip:** If the chat bubble doesn't appear after sending a message, click Send once more — this is a known Streamlit quirk.
 
 ---
 
-## 💡 Small Tip
-If the chat bubble doesn't appear after sending a message, click Send again.
+## Live Demo
+
+Try it without installing anything: [smartgrocer.streamlit.app](https://sctml01-mtp9lq3onlfd8wkmjsgttw.streamlit.app/)
